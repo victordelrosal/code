@@ -65,7 +65,11 @@
                 <div class="carousel-container">
                     <div class="carousel-track" id="carousel-track">
                         <!-- Hello World Card -->
-                        <a href="helloworld.html" class="tutorial-card">
+                        <a href="helloworld.html" class="tutorial-card" data-tutorial="helloworld">
+                            <button class="completion-toggle" onclick="toggleCompletion(event, 'helloworld')" title="Mark as complete">
+                                <span class="check-empty"></span>
+                                <span class="check-filled"></span>
+                            </button>
                             <div class="card-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                             </div>
@@ -80,7 +84,11 @@
                         </a>
 
                         <!-- OpenCode Card -->
-                        <a href="opencode.html" class="tutorial-card">
+                        <a href="opencode.html" class="tutorial-card" data-tutorial="opencode">
+                            <button class="completion-toggle" onclick="toggleCompletion(event, 'opencode')" title="Mark as complete">
+                                <span class="check-empty"></span>
+                                <span class="check-filled"></span>
+                            </button>
                             <div class="card-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                             </div>
@@ -95,7 +103,11 @@
                         </a>
 
                         <!-- GitHub Guide Card -->
-                        <a href="github.html" class="tutorial-card">
+                        <a href="github.html" class="tutorial-card" data-tutorial="github">
+                            <button class="completion-toggle" onclick="toggleCompletion(event, 'github')" title="Mark as complete">
+                                <span class="check-empty"></span>
+                                <span class="check-filled"></span>
+                            </button>
                             <div class="card-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                             </div>
@@ -147,7 +159,11 @@
         <!-- List View -->
         <section class="list-view" id="list-view">
             <div class="list-grid">
-                <a href="helloworld.html" class="list-item">
+                <a href="helloworld.html" class="list-item" data-tutorial="helloworld">
+                    <button class="completion-toggle" onclick="toggleCompletion(event, 'helloworld')" title="Mark as complete">
+                        <span class="check-empty"></span>
+                        <span class="check-filled"></span>
+                    </button>
                     <div class="list-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                     </div>
@@ -161,7 +177,11 @@
                     </div>
                 </a>
 
-                <a href="opencode.html" class="list-item">
+                <a href="opencode.html" class="list-item" data-tutorial="opencode">
+                    <button class="completion-toggle" onclick="toggleCompletion(event, 'opencode')" title="Mark as complete">
+                        <span class="check-empty"></span>
+                        <span class="check-filled"></span>
+                    </button>
                     <div class="list-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                     </div>
@@ -175,7 +195,11 @@
                     </div>
                 </a>
 
-                <a href="github.html" class="list-item">
+                <a href="github.html" class="list-item" data-tutorial="github">
+                    <button class="completion-toggle" onclick="toggleCompletion(event, 'github')" title="Mark as complete">
+                        <span class="check-empty"></span>
+                        <span class="check-filled"></span>
+                    </button>
                     <div class="list-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     </div>

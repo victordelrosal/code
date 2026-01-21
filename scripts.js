@@ -45,6 +45,69 @@ function toggleSession(header) {
     if (session) session.classList.toggle('open');
 }
 
+// ===== COMPLETION TOGGLE =====
+function toggleCompletion(event, tutorialId) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const btn = event.currentTarget;
+
+    // Get current completion state from localStorage
+    const completions = JSON.parse(localStorage.getItem('tutorialCompletions') || '{}');
+
+    // Toggle completion
+    const isCompleting = !completions[tutorialId];
+    completions[tutorialId] = isCompleting;
+
+    // Save to localStorage
+    localStorage.setItem('tutorialCompletions', JSON.stringify(completions));
+
+    // Add clicking effect
+    btn.classList.add('clicking');
+    setTimeout(() => btn.classList.remove('clicking'), 600);
+
+    // Show clapping emoji when completing
+    if (isCompleting) {
+        showClapEmoji(btn);
+    }
+
+    // Update all elements with this tutorial ID (both carousel and list view)
+    document.querySelectorAll(`[data-tutorial="${tutorialId}"]`).forEach(el => {
+        // Remove completed class first to reset animation
+        el.classList.remove('completed');
+
+        if (isCompleting) {
+            // Small delay to allow animation reset
+            requestAnimationFrame(() => {
+                el.classList.add('completed');
+            });
+        }
+    });
+}
+
+function showClapEmoji(btn) {
+    const emoji = document.createElement('span');
+    emoji.className = 'clap-emoji';
+    emoji.textContent = '👏';
+    btn.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 1000);
+}
+
+function loadCompletions() {
+    const completions = JSON.parse(localStorage.getItem('tutorialCompletions') || '{}');
+
+    Object.keys(completions).forEach(tutorialId => {
+        if (completions[tutorialId]) {
+            document.querySelectorAll(`[data-tutorial="${tutorialId}"]`).forEach(el => {
+                el.classList.add('completed');
+            });
+        }
+    });
+}
+
 // ===== COPY CODE BUTTON =====
 function copyCode(codeId, btn) {
     const codeEl = document.getElementById(codeId);
@@ -74,4 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('view') === 'list') {
         setView('list');
     }
+
+    // Load tutorial completion states
+    loadCompletions();
 });

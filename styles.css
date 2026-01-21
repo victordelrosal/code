@@ -41,7 +41,8 @@ body.light-mode {
     --card-hover-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
 }
 
-body.light-mode::before { background: #fff; }
+body.light-mode::before { background: transparent; }
+body.light-mode::after { opacity: 0.08; }
 body.light-mode .topbar { background: #fff; border-bottom: 1px solid #dadce0; box-shadow: 0 1px 2px rgba(60, 64, 67, 0.1); }
 body.light-mode .logo { background: #202124; -webkit-background-clip: text; font-weight: 500; }
 body.light-mode .footer { background: #fff; border-top: 1px solid #dadce0; }
@@ -73,8 +74,8 @@ body::after {
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: url('pattern-bg.png');
     background-repeat: repeat;
-    background-size: 400px 400px;
-    opacity: 0.1;
+    background-size: 650px 650px;
+    opacity: 0.06;
     pointer-events: none;
     z-index: -2;
 }
@@ -671,6 +672,186 @@ body.light-mode .filename-box.wrong { background: #fce8e6; border-color: #d93025
 body.light-mode .filename-box.wrong h5 { color: #d93025; }
 body.light-mode .filename-box.right { background: #e6f4ea; border-color: #1e8e3e; }
 body.light-mode .filename-box.right h5 { color: #1e8e3e; }
+
+/* ===== COMPLETION TOGGLE ===== */
+.completion-toggle {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.completion-toggle::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0);
+    transition: all 0.3s ease;
+}
+.completion-toggle:hover::before {
+    background: rgba(34, 197, 94, 0.1);
+    transform: scale(1.2);
+}
+.completion-toggle:active::before {
+    transform: scale(0.9);
+    background: rgba(34, 197, 94, 0.2);
+}
+
+/* Custom checkbox styling */
+.completion-toggle .check-empty,
+.completion-toggle .check-filled {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 0;
+}
+.completion-toggle .check-empty {
+    border: 2px solid var(--text-muted);
+    background: transparent;
+}
+.completion-toggle .check-filled {
+    border: 2px solid #22c55e;
+    background: #22c55e;
+    display: none;
+}
+.completion-toggle .check-filled::after {
+    content: '';
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.completion-toggle:hover .check-empty {
+    border-color: #22c55e;
+    transform: scale(1.05);
+}
+.completion-toggle:active .check-empty {
+    transform: scale(0.95);
+}
+
+/* Completed state */
+[data-tutorial].completed .completion-toggle .check-empty { display: none; }
+[data-tutorial].completed .completion-toggle .check-filled {
+    display: flex;
+    animation: checkBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Satisfying animations */
+@keyframes checkBounce {
+    0% { transform: scale(0); }
+    40% { transform: scale(1.3); }
+    60% { transform: scale(0.9); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Ripple effect on click */
+.completion-toggle.clicking::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.4);
+    animation: ripple 0.6s ease-out forwards;
+}
+@keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Sparkle effect */
+[data-tutorial].completed .completion-toggle::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.3) 0%, transparent 70%);
+    animation: sparkle 0.6s ease-out forwards;
+    pointer-events: none;
+}
+@keyframes sparkle {
+    0% { transform: scale(0); opacity: 1; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Clapping emoji celebration */
+.clap-emoji {
+    position: absolute;
+    font-size: 3.75rem;
+    pointer-events: none;
+    animation: clapFloat 1s ease-out forwards;
+    z-index: 100;
+}
+@keyframes clapFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -10px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -40px) scale(1);
+    }
+}
+
+/* Completed card styling */
+[data-tutorial].completed {
+    opacity: 0.85;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.03) 100%), #0a0a2e;
+    border-color: rgba(34, 197, 94, 0.25);
+}
+[data-tutorial].completed:hover {
+    opacity: 1;
+    border-color: rgba(34, 197, 94, 0.4);
+}
+body.light-mode [data-tutorial].completed {
+    background: linear-gradient(135deg, rgba(30, 142, 62, 0.08) 0%, rgba(30, 142, 62, 0.03) 100%), #fff;
+    border-color: rgba(30, 142, 62, 0.3);
+}
+body.light-mode [data-tutorial].completed:hover {
+    border-color: rgba(30, 142, 62, 0.5);
+}
+
+/* Light mode adjustments */
+body.light-mode .completion-toggle .check-empty { border-color: #dadce0; }
+body.light-mode .completion-toggle:hover .check-empty { border-color: #1e8e3e; }
+body.light-mode .completion-toggle .check-filled { border-color: #1e8e3e; background: #1e8e3e; }
+body.light-mode .completion-toggle:hover::before { background: rgba(30, 142, 62, 0.1); }
+body.light-mode .completion-toggle.clicking::after { background: rgba(30, 142, 62, 0.4); }
+body.light-mode [data-tutorial].completed .completion-toggle::after {
+    background: radial-gradient(circle, rgba(30, 142, 62, 0.3) 0%, transparent 70%);
+}
+
+/* List view completion toggle positioning */
+.list-item .completion-toggle {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
