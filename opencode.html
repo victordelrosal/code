@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCode Guide | AI Coding in Terminal</title>
+
+    <!-- Favicon & Apple Touch Icon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://victordelrosal.com/code/opencode.html">
+    <meta property="og:title" content="OpenCode Guide | AI Coding in Terminal">
+    <meta property="og:description" content="Set up OpenCode to code with AI directly in your terminal. No copy-paste needed.">
+    <meta property="og:image" content="https://victordelrosal.com/code/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenCode Guide | AI Coding in Terminal">
+    <meta name="twitter:description" content="Set up OpenCode to code with AI directly in your terminal. No copy-paste needed.">
+    <meta name="twitter:image" content="https://victordelrosal.com/code/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <a href="index.html" class="logo"><img src="logo.png" alt="" class="logo-icon"> Code</a>
+            <span class="page-title">OpenCode Guide</span>
+        </div>
+        <div class="topbar-right">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-padded">
+        <div class="course-header">
+            <h1>OpenCode Guide</h1>
+            <p class="subtitle">AI Coding Directly in Your Terminal</p>
+            <div class="meta">
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Victor del Rosal</span>
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>Beginner Friendly</span>
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10-Minute Setup</span>
+            </div>
+        </div>
+
+        <!-- WHY OPENCODE -->
+        <article class="session open" id="why-opencode">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+                <div class="session-info">
+                    <h2>What is OpenCode & Why Use Terminal?</h2>
+                    <span class="session-meta">The difference between web UI and terminal AI coding</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>You've Used ChatGPT... Now Level Up</h3>
+                <p>In the <a href="helloworld.html">Hello World guide</a>, you asked an AI to generate code, then copy-pasted it into a file. That works great for learning, but what happens when you're building <em>real</em> projects with dozens of files?</p>
+
+                <p><strong>OpenCode</strong> is an open-source AI coding assistant that runs in your terminal. Instead of copy-pasting between browser and editor, you have a conversation with AI <em>inside</em> your project folder. The AI can read your files, understand your codebase, and write code directly.</p>
+
+                <h3>Web UI vs Terminal: The Key Difference</h3>
+
+                <div class="step-grid">
+                    <div class="concept-card">
+                        <h4>Web UI (ChatGPT, Claude, Gemini)</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>You copy code from the AI</li>
+                            <li>You paste into your editor</li>
+                            <li>AI can't see your files</li>
+                            <li>You describe your code in words</li>
+                            <li>Great for learning concepts</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Terminal (OpenCode)</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI reads your actual files</li>
+                            <li>AI writes directly to your project</li>
+                            <li>Full context of your codebase</li>
+                            <li>No copy-paste needed</li>
+                            <li>Built for real projects</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Think of it this way</h4>
+                    <p>Web UI is like texting a friend who helps with code. Terminal AI is like having that friend <strong>sitting next to you</strong>, looking at your screen, and typing for you.</p>
+                </div>
+
+                <h3>Why This Matters</h3>
+                <p>When you say <em>"fix the bug in my login function"</em>:</p>
+                <ul>
+                    <li><strong>Web UI:</strong> You have to paste your entire file, explain where the function is, wait for a response, then manually apply changes</li>
+                    <li><strong>Terminal:</strong> The AI finds your login function, understands the context, and fixes it directly</li>
+                </ul>
+
+                <p>This guide will get you set up with OpenCode so you can experience the difference yourself.</p>
+            </div>
+        </article>
+
+        <!-- QUICK START -->
+        <article class="session" id="quick-start">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div class="session-info">
+                    <h2>Quick Start: 10-Minute Setup</h2>
+                    <span class="session-meta">Get OpenCode running fast</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <h5>Open Terminal</h5>
+                        <p><strong>Mac:</strong> <kbd>Cmd</kbd>+<kbd>Space</kbd>, type "Terminal"<br><strong>Windows:</strong> Search "PowerShell"</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <h5>Install OpenCode</h5>
+                        <p>Paste the install command (see below)</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <h5>Get API Key</h5>
+                        <p>Sign up at <a href="https://openrouter.ai" target="_blank">openrouter.ai</a> and copy your key</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">4</div>
+                        <h5>Start Coding</h5>
+                        <p>Navigate to a project folder and run <code>opencode</code></p>
+                    </div>
+                </div>
+
+                <h3>Install Command</h3>
+                <div class="code-block-wrapper">
+                    <pre><code id="install-cmd">curl -fsSL https://opencode.ai/install | bash</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('install-cmd', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <h3>First Run</h3>
+                <div class="code-block-wrapper">
+                    <pre><code id="first-run">cd ~/Desktop
+opencode</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('first-run', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy commands</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> You're Ready!</h4>
+                    <p>OpenCode will prompt you for your API key on first run. Once configured, just type what you want to build!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- DETAILED GUIDE -->
+        <article class="session" id="detailed-guide">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                <div class="session-info">
+                    <h2>Detailed Step-by-Step Guide</h2>
+                    <span class="session-meta">Complete instructions for Mac and Windows</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Part 1: Open Terminal</h3>
+
+                <div class="concept-card">
+                    <h4>Mac</h4>
+                    <ol style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Press <kbd>Cmd</kbd> + <kbd>Space</kbd> to open Spotlight</li>
+                        <li>Type <code>Terminal</code> and press Enter</li>
+                        <li>A window with a command line will appear</li>
+                    </ol>
+                </div>
+
+                <div class="concept-card">
+                    <h4>Windows</h4>
+                    <ol style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Press the Windows key</li>
+                        <li>Type <code>PowerShell</code></li>
+                        <li>Click "Windows PowerShell" (run as Administrator if prompted)</li>
+                    </ol>
+                </div>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> What is Terminal?</h4>
+                    <p>Terminal (Mac) or PowerShell (Windows) is a text-based interface to your computer. Instead of clicking icons, you type commands. It's how developers have worked for decades, and it's incredibly powerful once you get used to it.</p>
+                </div>
+
+                <h3>Part 2: Install OpenCode</h3>
+
+                <h4>Mac Installation</h4>
+                <p>Copy and paste this command into Terminal, then press Enter:</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="install-mac">curl -fsSL https://opencode.ai/install | bash</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('install-mac', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <h4>Windows Installation</h4>
+                <p>Copy and paste this command into PowerShell, then press Enter:</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="install-windows">irm https://opencode.ai/install.ps1 | iex</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('install-windows', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p>Wait for the installation to complete. You'll see a success message when it's done.</p>
+
+                <h3>Part 3: Get Your API Key</h3>
+
+                <p>OpenCode needs an API key to connect to AI models. We recommend <strong>OpenRouter</strong> because it gives you access to multiple AI models with one key.</p>
+
+                <ol>
+                    <li>Go to <a href="https://openrouter.ai" target="_blank">openrouter.ai</a></li>
+                    <li>Click "Sign Up" and create an account (Google sign-in works)</li>
+                    <li>Go to <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a></li>
+                    <li>Click "Create Key"</li>
+                    <li>Copy the key (it starts with <code>sk-or-</code>)</li>
+                </ol>
+
+                <div class="callout warning">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Keep Your Key Secret</h4>
+                    <p>Your API key is like a password. Don't share it publicly or commit it to GitHub.</p>
+                </div>
+
+                <h3>Part 4: Configure OpenCode</h3>
+
+                <p>Run OpenCode for the first time:</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="run-opencode">opencode</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('run-opencode', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p>OpenCode will ask for your API key. Paste the key you copied from OpenRouter and press Enter.</p>
+
+                <h3>Part 5: Your First OpenCode Session</h3>
+
+                <p>Navigate to your Desktop (or any folder you want to work in):</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="nav-desktop">cd ~/Desktop</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('nav-desktop', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p>Start OpenCode:</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="start-opencode">opencode</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('start-opencode', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy command</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p>Now try asking it to create something:</p>
+                <div class="code-block-wrapper">
+                    <pre><code id="first-prompt">Create a simple hello world HTML page with a button that changes the background color when clicked</code></pre>
+                    <div class="code-block-footer">
+                        <button class="copy-code-btn" onclick="copyCode('first-prompt', this)">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="btn-text">Copy prompt</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p>OpenCode will create the file directly on your Desktop. Open it in your browser to see the result!</p>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Congratulations!</h4>
+                    <p>You've set up OpenCode and created your first file using terminal-based AI coding!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- USEFUL COMMANDS -->
+        <article class="session" id="commands">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+                <div class="session-info">
+                    <h2>Essential Terminal Commands</h2>
+                    <span class="session-meta">Navigate your computer like a pro</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <p>Before using OpenCode effectively, learn these basic terminal commands:</p>
+
+                <table class="keyboard-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>What It Does</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cd</code></td>
+                            <td>Change directory (folder)</td>
+                            <td><code>cd ~/Desktop</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>ls</code></td>
+                            <td>List files in current folder</td>
+                            <td><code>ls</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>pwd</code></td>
+                            <td>Show current folder path</td>
+                            <td><code>pwd</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>mkdir</code></td>
+                            <td>Create a new folder</td>
+                            <td><code>mkdir myproject</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>clear</code></td>
+                            <td>Clear the terminal screen</td>
+                            <td><code>clear</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Common Paths</h3>
+                <ul>
+                    <li><code>~</code> = Your home folder</li>
+                    <li><code>~/Desktop</code> = Your Desktop</li>
+                    <li><code>~/Documents</code> = Your Documents folder</li>
+                    <li><code>..</code> = Go up one folder</li>
+                </ul>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Pro Tip: Tab Completion</h4>
+                    <p>Press <kbd>Tab</kbd> while typing a folder or file name to auto-complete it. This saves typing and prevents typos!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TROUBLESHOOTING -->
+        <article class="session" id="troubleshooting">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="session-info">
+                    <h2>Troubleshooting</h2>
+                    <span class="session-meta">Common problems and solutions</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <div class="callout info" style="margin-bottom: 1.5rem;">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Pro Tip: Use AI for Troubleshooting</h4>
+                    <p>If you get an error, paste it into ChatGPT or Claude and ask for help. AI is great at explaining terminal errors!</p>
+                </div>
+
+                <h3>Common Issues</h3>
+
+                <div class="concept-card">
+                    <h4>"command not found: opencode"</h4>
+                    <p>The installation didn't complete, or you need to restart your terminal. Close Terminal and open it again, then try <code>opencode</code>.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"Permission denied"</h4>
+                    <p>On Mac, you may need to allow the app in System Preferences > Security & Privacy. On Windows, try running PowerShell as Administrator.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"Invalid API key"</h4>
+                    <p>Make sure you copied the entire key from OpenRouter, including the <code>sk-or-</code> prefix. You can reconfigure with <code>opencode --config</code>.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"curl: command not found" (Mac)</h4>
+                    <p>You may need to install Xcode Command Line Tools. Run: <code>xcode-select --install</code></p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>Terminal is scary / I'm lost</h4>
+                    <p>That's normal! Take it slow. Type <code>pwd</code> to see where you are, <code>ls</code> to see what's there, and <code>cd ~/Desktop</code> to go somewhere familiar.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer footer-fixed">
+        <span>vdr.me/code</span>
+        <span>&bull;</span>
+        <span>Victor del Rosal</span>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
