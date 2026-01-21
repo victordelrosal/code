@@ -3,22 +3,9 @@
    =================================================== */
 
 // ===== THEME MANAGEMENT =====
-function setTheme(theme) {
-    document.body.classList.remove('light-mode', 'pro-mode');
-    if (theme === 'light') document.body.classList.add('light-mode');
-    if (theme === 'pro') document.body.classList.add('pro-mode');
-
-    // Update theme selector buttons if they exist
-    const buttons = document.querySelectorAll('.theme-selector button');
-    buttons.forEach((btn, i) => {
-        btn.classList.toggle('active',
-            (theme === 'dark' && i === 0) ||
-            (theme === 'light' && i === 1) ||
-            (theme === 'pro' && i === 2)
-        );
-    });
-
-    localStorage.setItem('theme', theme);
+function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
 }
 
 // ===== VIEW TOGGLE (Hub Page) =====
@@ -79,9 +66,8 @@ function copyCode(codeId, btn) {
 // ===== INITIALIZE ON PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', function() {
     // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
     }
 
     // Load saved view preference (hub page only)
