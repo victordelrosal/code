@@ -97,13 +97,23 @@ body.light-mode strong { color: var(--text-primary); font-weight: 600; }
     font-family: 'IBM Plex Mono', monospace;
     font-size: 1.25rem;
     font-weight: 600;
-    background: linear-gradient(90deg, #7dd3fc 0%, #38bdf8 50%, #00D4FF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #5CE1E6;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
-.logo:hover { text-decoration: none; }
+.logo:hover { text-decoration: none; color: #5CE1E6; }
+.logo-icon {
+    height: 28px;
+    width: auto;
+}
+body.light-mode .logo {
+    color: #1a73e8;
+}
+body.light-mode .logo-icon {
+    filter: sepia(1) saturate(5) hue-rotate(185deg) brightness(0.7);
+}
 .page-title {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -201,14 +211,20 @@ body.light-mode .view-toggle button.active { background: #1a73e8; color: #fff; }
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #5CE1E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+.hero-logo {
+    height: 56px;
+    width: auto;
 }
 .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
 
-body.light-mode .hero h1 { background: #202124; -webkit-background-clip: text; font-weight: 400; }
+body.light-mode .hero h1 { color: #1a73e8; font-weight: 400; }
+body.light-mode .hero-logo { filter: sepia(1) saturate(5) hue-rotate(185deg) brightness(0.7); }
 
 /* ===== COURSE HEADER (Tutorial Pages) ===== */
 .course-header {
