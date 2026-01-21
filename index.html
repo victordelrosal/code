@@ -27,28 +27,43 @@
 
         body.light-mode {
             --text-primary: #1a1a1a;
-            --text-secondary: #3d3d3d;
-            --text-tertiary: #666666;
-            --text-muted: #999999;
-            --bg-dark: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.9);
-            --border: rgba(0, 0, 0, 0.1);
-            --cyan: #0066cc;
-            --electric: #0052a3;
-            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.08);
-            --card-hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), 0 16px 48px rgba(0, 0, 0, 0.12);
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6b6b6b;
+            --text-muted: #9a9a9a;
+            --bg-dark: #fafafa;
+            --bg-card: #ffffff;
+            --border: rgba(0, 0, 0, 0.12);
+            --cyan: #333;
+            --electric: #555;
+            --success: #4a4a4a;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        body.light-mode::before { background: linear-gradient(135deg, rgba(240, 245, 255, 0.9), rgba(255, 255, 255, 0.95)); }
-        body.light-mode .topbar { background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
-        body.light-mode .logo { background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%); -webkit-background-clip: text; }
-        body.light-mode .tutorial-card { background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); }
-        body.light-mode .tutorial-card:hover { border-color: var(--cyan); }
-        body.light-mode .tutorial-card.placeholder { background: rgba(0, 0, 0, 0.02); border: 2px dashed rgba(0, 0, 0, 0.15); }
-        body.light-mode .scroll-btn { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 0, 0, 0.1); color: #333; }
-        body.light-mode .scroll-btn:hover { background: #fff; border-color: var(--cyan); }
-        body.light-mode .view-toggle button { background: rgba(0, 0, 0, 0.05); color: var(--text-secondary); }
-        body.light-mode .view-toggle button.active { background: var(--cyan); color: #fff; }
+        body.light-mode::before { background: #fafafa; }
+        body.light-mode .topbar { background: #fff; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        body.light-mode .logo { background: #1a1a1a; -webkit-background-clip: text; }
+        body.light-mode .hero h1 { background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%); -webkit-background-clip: text; }
+        body.light-mode .carousel-header h2 { color: #1a1a1a; }
+        body.light-mode .tutorial-card { background: #fff; border: 1px solid rgba(0, 0, 0, 0.1); }
+        body.light-mode .tutorial-card:hover { border-color: #333; }
+        body.light-mode .tutorial-card.placeholder { background: #f5f5f5; border: 2px dashed rgba(0, 0, 0, 0.15); }
+        body.light-mode .card-icon { background: linear-gradient(135deg, #333, #555); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); }
+        body.light-mode .card-icon.placeholder-icon { background: #e5e5e5; color: #999; }
+        body.light-mode .card-tag { background: rgba(0, 0, 0, 0.08); color: #4a4a4a; }
+        body.light-mode .card-tag.beginner { background: rgba(0, 0, 0, 0.08); color: #4a4a4a; }
+        body.light-mode .card-tag.coming { background: rgba(0, 0, 0, 0.05); color: #9a9a9a; }
+        body.light-mode .scroll-btn { background: #fff; border: 1px solid rgba(0, 0, 0, 0.15); color: #4a4a4a; }
+        body.light-mode .scroll-btn:hover { background: #f5f5f5; border-color: #333; color: #1a1a1a; }
+        body.light-mode .view-toggle { background: rgba(0, 0, 0, 0.05); }
+        body.light-mode .view-toggle button { color: #6b6b6b; }
+        body.light-mode .view-toggle button.active { background: #333; color: #fff; }
+        body.light-mode .btn-icon { border-color: rgba(0, 0, 0, 0.15); color: #4a4a4a; }
+        body.light-mode .btn-icon:hover { background: #f5f5f5; border-color: #333; color: #1a1a1a; }
+        body.light-mode .list-item:hover { border-color: #333; background: #f9f9f9; }
+        body.light-mode .list-icon { background: linear-gradient(135deg, #333, #555); }
+        body.light-mode .list-icon.placeholder-icon { background: #e5e5e5; color: #999; }
+        body.light-mode .footer a { color: #333; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -77,16 +92,17 @@
         .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
 
         .carousel-section { padding: 2rem 0; }
-        .carousel-header { display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; margin-bottom: 1.5rem; }
+        .carousel-header { display: flex; align-items: center; justify-content: center; padding: 0 2rem; margin-bottom: 1.5rem; }
         .carousel-header h2 { font-size: 1.25rem; font-weight: 600; color: var(--cyan); }
-        .carousel-nav { display: flex; gap: 0.5rem; }
-        .scroll-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 20, 80, 0.6); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; backdrop-filter: blur(10px); }
+
+        .carousel-wrapper { display: flex; align-items: center; gap: 1rem; padding: 0 1rem; }
+        .scroll-btn { width: 48px; height: 48px; border-radius: 50%; background: rgba(0, 20, 80, 0.6); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; backdrop-filter: blur(10px); flex-shrink: 0; }
         .scroll-btn:hover { background: rgba(0, 102, 255, 0.3); border-color: var(--cyan); color: var(--text-primary); }
         .scroll-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .scroll-btn svg { width: 20px; height: 20px; }
 
-        .carousel-container { position: relative; overflow: hidden; }
-        .carousel-track { display: flex; gap: 1.5rem; padding: 0.5rem 2rem 1rem; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+        .carousel-container { flex: 1; overflow: hidden; min-width: 0; }
+        .carousel-track { display: flex; gap: 1.5rem; padding: 0.5rem 1rem 1rem; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
         .carousel-track::-webkit-scrollbar { display: none; }
 
         .tutorial-card { flex: 0 0 320px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 1.25rem; padding: 1.5rem; text-decoration: none; color: inherit; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--card-shadow); backdrop-filter: blur(20px); display: flex; flex-direction: column; gap: 1rem; }
