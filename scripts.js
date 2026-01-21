@@ -89,7 +89,12 @@ function showClapEmoji(btn) {
     const emoji = document.createElement('span');
     emoji.className = 'clap-emoji';
     emoji.textContent = '👏';
-    btn.appendChild(emoji);
+
+    // Get button position and append to body for no clipping (fixed position)
+    const rect = btn.getBoundingClientRect();
+    emoji.style.left = (rect.left + rect.width / 2) + 'px';
+    emoji.style.top = rect.top + 'px';
+    document.body.appendChild(emoji);
 
     setTimeout(() => {
         emoji.remove();
@@ -126,6 +131,59 @@ function copyCode(codeId, btn) {
     });
 }
 
+// ===== TUTORIAL PAGE COMPLETION TOGGLE =====
+function injectTutorialCompletion() {
+    const tutorialId = document.body.dataset.tutorial;
+    if (!tutorialId) return; // Not a tutorial page
+
+    const courseHeader = document.querySelector('.course-header');
+    if (!courseHeader) return;
+
+    // Create completion toggle for tutorial page
+    const completions = JSON.parse(localStorage.getItem('tutorialCompletions') || '{}');
+    const isCompleted = completions[tutorialId];
+
+    const toggleHtml = `
+        <button class="tutorial-completion-btn ${isCompleted ? 'completed' : ''}" onclick="toggleTutorialCompletion('${tutorialId}')" title="Mark as complete">
+            <span class="check-empty"></span>
+            <span class="check-filled"></span>
+            <span class="btn-label">${isCompleted ? 'Completed!' : 'Mark Complete'}</span>
+        </button>
+    `;
+
+    // Insert after the meta div
+    const meta = courseHeader.querySelector('.meta');
+    if (meta) {
+        meta.insertAdjacentHTML('afterend', toggleHtml);
+    }
+
+    // Add completed class to body if completed
+    if (isCompleted) {
+        document.body.classList.add('tutorial-completed');
+    }
+}
+
+function toggleTutorialCompletion(tutorialId) {
+    const completions = JSON.parse(localStorage.getItem('tutorialCompletions') || '{}');
+    const isCompleting = !completions[tutorialId];
+    completions[tutorialId] = isCompleting;
+    localStorage.setItem('tutorialCompletions', JSON.stringify(completions));
+
+    const btn = document.querySelector('.tutorial-completion-btn');
+    const label = btn.querySelector('.btn-label');
+
+    if (isCompleting) {
+        btn.classList.add('completed');
+        label.textContent = 'Completed!';
+        document.body.classList.add('tutorial-completed');
+        showClapEmoji(btn);
+    } else {
+        btn.classList.remove('completed');
+        label.textContent = 'Mark Complete';
+        document.body.classList.remove('tutorial-completed');
+    }
+}
+
 // ===== INITIALIZE ON PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', function() {
     // Load saved theme
@@ -140,4 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load tutorial completion states
     loadCompletions();
+
+    // Inject completion toggle on tutorial pages
+    injectTutorialCompletion();
 });
