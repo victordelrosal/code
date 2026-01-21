@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Guide | Deploy Your First Website</title>
+
+    <!-- Favicon & Apple Touch Icon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://victordelrosal.com/code/github.html">
+    <meta property="og:title" content="GitHub Guide | Deploy Your First Website">
+    <meta property="og:description" content="Create a GitHub account and put your first website online for free. Step-by-step guide for beginners.">
+    <meta property="og:image" content="https://victordelrosal.com/code/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GitHub Guide | Deploy Your First Website">
+    <meta name="twitter:description" content="Create a GitHub account and put your first website online for free. Step-by-step guide for beginners.">
+    <meta name="twitter:image" content="https://victordelrosal.com/code/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <a href="index.html" class="logo"><img src="logo.png" alt="" class="logo-icon"> Code</a>
+            <span class="page-title">GitHub Guide</span>
+        </div>
+        <div class="topbar-right">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-padded">
+        <div class="course-header">
+            <h1>GitHub Guide</h1>
+            <p class="subtitle">Put Your First Website Online (For Free!)</p>
+            <div class="meta">
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Victor del Rosal</span>
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>Beginner Friendly</span>
+                <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>15-Minute Setup</span>
+            </div>
+        </div>
+
+        <!-- WHAT IS GITHUB -->
+        <article class="session open" id="what-is-github">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+                <div class="session-info">
+                    <h2>What is GitHub & Why Do I Need It?</h2>
+                    <span class="session-meta">Understanding the basics before we start</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Your Code Needs a Home on the Internet</h3>
+                <p>Right now, the webpage you created in the <a href="helloworld.html">Hello World guide</a> only exists on your computer. If you want to share it with friends, family, or the world &mdash; you need to put it online.</p>
+
+                <p><strong>GitHub</strong> is a website where developers store their code. Think of it like Google Drive or Dropbox, but specifically designed for code. And here's the best part: GitHub can also <em>host</em> your website for free!</p>
+
+                <div class="step-grid">
+                    <div class="concept-card">
+                        <h4>What GitHub Does</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Stores your code online (backup!)</li>
+                            <li>Hosts websites for free</li>
+                            <li>Tracks changes to your files</li>
+                            <li>Lets others see your work</li>
+                            <li>Used by every professional developer</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>What You'll Get</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>A free GitHub account</li>
+                            <li>Your code stored safely online</li>
+                            <li>A real website URL to share</li>
+                            <li>A professional portfolio start</li>
+                            <li>Skills every coder needs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Your Website URL</h4>
+                    <p>By the end of this guide, your website will be live at:<br><code>https://yourusername.github.io/helloworld</code></p>
+                    <p style="margin-top: 0.5rem; margin-bottom: 0; font-size: 0.85rem; color: var(--text-tertiary);">You can share this link with anyone, and they'll see your webpage!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- FOLDER STRUCTURE -->
+        <article class="session" id="folder-structure">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+                <div class="session-info">
+                    <h2>Step 1: Set Up Your Project Folders</h2>
+                    <span class="session-meta">Organize your code like a professional</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Why Organization Matters</h3>
+                <p>Before we go any further, let's set up a proper folder structure. As you build more projects, you'll thank yourself for staying organized from day one. Professional developers keep all their code in one place.</p>
+
+                <div class="callout warning">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Required Setup</h4>
+                    <p>Please follow these steps exactly. The folder structure matters for everything we do going forward.</p>
+                </div>
+
+                <h3>Create Your Projects Folder</h3>
+
+                <div class="concept-card">
+                    <h4>Mac Instructions</h4>
+                    <ol style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Open <strong>Finder</strong> (the blue smiley face icon in your dock)</li>
+                        <li>In the left sidebar, click on your username (it has a house icon)</li>
+                        <li>Right-click in the empty space and select <strong>"New Folder"</strong></li>
+                        <li>Name it exactly: <code>projects</code> (all lowercase)</li>
+                        <li>Press Enter to confirm</li>
+                    </ol>
+                </div>
+
+                <div class="concept-card">
+                    <h4>Windows Instructions</h4>
+                    <ol style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Open <strong>File Explorer</strong> (the folder icon in your taskbar)</li>
+                        <li>In the left sidebar, click on <strong>"This PC"</strong></li>
+                        <li>Double-click on your <strong>C: drive</strong> or <strong>Documents</strong></li>
+                        <li>Right-click in the empty space and select <strong>"New" → "Folder"</strong></li>
+                        <li>Name it exactly: <code>projects</code> (all lowercase)</li>
+                        <li>Press Enter to confirm</li>
+                    </ol>
+                </div>
+
+                <h3>Create Your Hello World Project Folder</h3>
+
+                <ol>
+                    <li>Open your new <code>projects</code> folder</li>
+                    <li>Create another new folder inside it</li>
+                    <li>Name it exactly: <code>helloworld</code> (all lowercase, no spaces)</li>
+                </ol>
+
+                <h3>Your Folder Structure Should Look Like This</h3>
+
+                <div class="code-block-wrapper">
+                    <pre><code id="folder-structure">📁 projects
+   └── 📁 helloworld
+          └── 📄 index.html   ← your webpage goes here</code></pre>
+                </div>
+
+                <div class="callout error">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Critical: Rename Your File!</h4>
+                    <p>If you saved your file as <code>helloworld.html</code> in the previous guide, you need to <strong>rename it to <code>index.html</code></strong> and move it into your new <code>helloworld</code> folder.</p>
+                    <p style="margin-top: 0.5rem; margin-bottom: 0;">Why? When someone visits your website, the server automatically looks for a file called <code>index.html</code>. It's like the "front door" of every website.</p>
+                </div>
+
+                <h3>Move and Rename Your File</h3>
+
+                <ol>
+                    <li>Find your <code>helloworld.html</code> file (probably on your Desktop)</li>
+                    <li>Drag it into your <code>projects/helloworld</code> folder</li>
+                    <li>Right-click the file and select <strong>"Rename"</strong></li>
+                    <li>Change the name from <code>helloworld.html</code> to <code>index.html</code></li>
+                    <li>Press Enter to confirm</li>
+                </ol>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Checkpoint</h4>
+                    <p>You should now have: <code>projects/helloworld/index.html</code></p>
+                    <p style="margin-bottom: 0;">Double-click <code>index.html</code> to make sure it still opens in your browser and shows your Hello World page.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CREATE GITHUB ACCOUNT -->
+        <article class="session" id="create-account">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="session-info">
+                    <h2>Step 2: Create Your GitHub Account</h2>
+                    <span class="session-meta">Sign up for free in 2 minutes</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Sign Up for GitHub</h3>
+
+                <ol>
+                    <li>Go to <a href="https://github.com" target="_blank">github.com</a></li>
+                    <li>Click the <strong>"Sign up"</strong> button (top right)</li>
+                    <li>Enter your email address</li>
+                    <li>Create a password</li>
+                    <li>Choose a username</li>
+                </ol>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Choosing a Username</h4>
+                    <p>Your username becomes part of your website URL (<code>username.github.io</code>), so choose wisely!</p>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li><strong>Good:</strong> <code>johndoe</code>, <code>jane-smith</code>, <code>jsmith2026</code></li>
+                        <li><strong>Avoid:</strong> <code>xXx_gamer_xXx</code>, <code>temp123456</code></li>
+                    </ul>
+                </div>
+
+                <ol start="6">
+                    <li>Complete the verification puzzle (proves you're human)</li>
+                    <li>Check your email and click the verification link</li>
+                    <li>Answer the personalization questions (or skip them)</li>
+                    <li>Select the <strong>Free</strong> plan</li>
+                </ol>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Account Created!</h4>
+                    <p>You now have a GitHub account. Welcome to the world of coding!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CREATE REPOSITORY -->
+        <article class="session" id="create-repo">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                <div class="session-info">
+                    <h2>Step 3: Create a Repository</h2>
+                    <span class="session-meta">Make a home for your project on GitHub</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <div class="callout info" style="margin-bottom: 1.5rem;">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> What's a Repository?</h4>
+                    <p>A <strong>repository</strong> (or "repo") is like a folder for your project on GitHub. Each project you create gets its own repository.</p>
+                </div>
+
+                <h3>Create Your First Repository</h3>
+
+                <ol>
+                    <li>Make sure you're logged into <a href="https://github.com" target="_blank">github.com</a></li>
+                    <li>Click the <strong>+</strong> icon in the top right corner</li>
+                    <li>Select <strong>"New repository"</strong></li>
+                </ol>
+
+                <h3>Fill In the Repository Details</h3>
+
+                <div class="concept-card">
+                    <h4>Repository Settings</h4>
+                    <table style="width: 100%; font-size: 0.9rem; margin-top: 0.5rem;">
+                        <tr>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Repository name:</strong></td>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><code>helloworld</code></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Description:</strong></td>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">My first website (optional)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Public/Private:</strong></td>
+                            <td style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">Select <strong>Public</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0;"><strong>Add a README:</strong></td>
+                            <td style="padding: 0.5rem 0;">Leave <strong>unchecked</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <ol start="4">
+                    <li>Click the green <strong>"Create repository"</strong> button</li>
+                </ol>
+
+                <p>You'll see a page with setup instructions. Don't worry about these &mdash; we'll use an easier method to upload your files.</p>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Repository Created!</h4>
+                    <p>You now have an empty repository waiting for your code.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- UPLOAD FILES -->
+        <article class="session" id="upload-files">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="session-info">
+                    <h2>Step 4: Upload Your Website Files</h2>
+                    <span class="session-meta">Get your code onto GitHub</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Upload Your index.html File</h3>
+
+                <ol>
+                    <li>On your repository page, look for the link that says <strong>"uploading an existing file"</strong> (in the quick setup section)</li>
+                    <li>Click it</li>
+                </ol>
+
+                <p>If you don't see that link, click the <strong>"Add file"</strong> button and select <strong>"Upload files"</strong>.</p>
+
+                <ol start="3">
+                    <li>Open your <code>projects/helloworld</code> folder on your computer</li>
+                    <li>Drag your <code>index.html</code> file into the browser window where it says "Drag files here"</li>
+                    <li>Wait for the file to upload (you'll see a green checkmark)</li>
+                </ol>
+
+                <h3>Commit Your Changes</h3>
+
+                <div class="callout info" style="margin-bottom: 1rem;">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> What's a Commit?</h4>
+                    <p>A <strong>commit</strong> is like saving a snapshot of your project. Every time you make changes, you "commit" them with a short description of what you did.</p>
+                </div>
+
+                <ol start="6">
+                    <li>In the "Commit changes" section at the bottom, you'll see a text box</li>
+                    <li>Type a short message like: <code>Add my first webpage</code></li>
+                    <li>Click the green <strong>"Commit changes"</strong> button</li>
+                </ol>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> File Uploaded!</h4>
+                    <p>Your code is now on GitHub! You should see <code>index.html</code> listed in your repository.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ENABLE GITHUB PAGES -->
+        <article class="session" id="github-pages">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                <div class="session-info">
+                    <h2>Step 5: Turn On GitHub Pages</h2>
+                    <span class="session-meta">Make your website live on the internet</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <div class="callout info" style="margin-bottom: 1.5rem;">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> What's GitHub Pages?</h4>
+                    <p><strong>GitHub Pages</strong> is a free service that turns your repository into a live website. No servers to set up, no hosting fees &mdash; just flip a switch!</p>
+                </div>
+
+                <h3>Enable GitHub Pages</h3>
+
+                <ol>
+                    <li>On your repository page, click <strong>"Settings"</strong> (the gear icon near the top)</li>
+                    <li>In the left sidebar, scroll down and click <strong>"Pages"</strong></li>
+                    <li>Under "Source", you'll see a dropdown that says "None"</li>
+                    <li>Click it and select <strong>"main"</strong> (or "master")</li>
+                    <li>Leave the folder as <strong>"/ (root)"</strong></li>
+                    <li>Click <strong>"Save"</strong></li>
+                </ol>
+
+                <h3>Wait for Deployment</h3>
+
+                <p>GitHub will now build your website. This usually takes 1-2 minutes.</p>
+
+                <ol start="7">
+                    <li>Refresh the page after a minute</li>
+                    <li>You should see a message: <strong>"Your site is live at..."</strong> with a URL</li>
+                </ol>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Your Website is Live!</h4>
+                    <p>Click the link to see your website on the real internet!</p>
+                    <p style="margin-bottom: 0;">Your URL will be: <code>https://yourusername.github.io/helloworld</code></p>
+                </div>
+
+                <div class="callout warning">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Don't See It Yet?</h4>
+                    <p>If you see a 404 error, wait a few more minutes and try again. GitHub Pages can take up to 10 minutes to deploy the first time.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- MAKING CHANGES -->
+        <article class="session" id="making-changes">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+                <div class="session-info">
+                    <h2>Making Changes to Your Website</h2>
+                    <span class="session-meta">How to update your site after it's live</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Edit Your Code on GitHub</h3>
+
+                <p>You can edit your website directly on GitHub without downloading anything!</p>
+
+                <ol>
+                    <li>Go to your repository on GitHub</li>
+                    <li>Click on <code>index.html</code></li>
+                    <li>Click the <strong>pencil icon</strong> (top right of the file view) to edit</li>
+                    <li>Make your changes</li>
+                    <li>Scroll down and click <strong>"Commit changes"</strong></li>
+                    <li>Wait 1-2 minutes for the site to update</li>
+                    <li>Refresh your website to see the changes!</li>
+                </ol>
+
+                <h3>Or Edit Locally and Re-Upload</h3>
+
+                <ol>
+                    <li>Edit <code>index.html</code> on your computer using Sublime Text</li>
+                    <li>Go to your repository on GitHub</li>
+                    <li>Click <strong>"Add file" → "Upload files"</strong></li>
+                    <li>Drag your updated <code>index.html</code> file in</li>
+                    <li>Commit the changes</li>
+                </ol>
+
+                <div class="callout info">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Pro Tip</h4>
+                    <p>For simple changes, edit directly on GitHub. For bigger updates, edit locally and upload. As you advance, you'll learn to use Git (the command-line tool) for a smoother workflow.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- NEXT STEPS -->
+        <article class="session" id="next-steps">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div class="session-info">
+                    <h2>What's Next?</h2>
+                    <span class="session-meta">Keep building your portfolio</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <h3>Congratulations!</h3>
+                <p>You've just deployed your first website to the internet. That's a huge milestone! Here's what you can do next:</p>
+
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <h5>Share Your URL</h5>
+                        <p>Send your website link to friends and family. You made this!</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <h5>Build More Projects</h5>
+                        <p>Create more folders in <code>projects</code> and more repositories on GitHub.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <h5>Learn More HTML/CSS</h5>
+                        <p>Ask your LLM of choice to help you add features to your page.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">4</div>
+                        <h5>Try OpenCode</h5>
+                        <p>Check out the <a href="opencode.html">OpenCode Guide</a> to level up your coding workflow.</p>
+                    </div>
+                </div>
+
+                <h3>Your Project Folder Will Grow</h3>
+
+                <div class="code-block-wrapper">
+                    <pre><code id="future-structure">📁 projects
+   ├── 📁 helloworld        ← your first project
+   │      └── 📄 index.html
+   ├── 📁 portfolio         ← future project
+   │      ├── 📄 index.html
+   │      └── 📄 style.css
+   └── 📁 cool-app          ← another project
+          └── 📄 index.html</code></pre>
+                </div>
+
+                <p>Each folder becomes a separate repository on GitHub, and each can become its own website!</p>
+
+                <div class="callout success">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> You Did It!</h4>
+                    <p>You now have the foundational skills every web developer needs: writing code, organizing projects, and deploying to the internet. Keep building!</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TROUBLESHOOTING -->
+        <article class="session" id="troubleshooting">
+            <div class="session-header" onclick="toggleSession(this)">
+                <div class="session-number"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="session-info">
+                    <h2>Troubleshooting</h2>
+                    <span class="session-meta">Common problems and solutions</span>
+                </div>
+                <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <div class="session-content">
+                <div class="callout info" style="margin-bottom: 1.5rem;">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Pro Tip: Use AI for Help</h4>
+                    <p>Stuck? Describe your problem to your LLM of choice (ChatGPT, Claude, Gemini). You can even share screenshots &mdash; AI can read images!</p>
+                </div>
+
+                <h3>Common Issues</h3>
+
+                <div class="concept-card">
+                    <h4>"404 - Page Not Found"</h4>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Wait a few more minutes &mdash; GitHub Pages can take up to 10 minutes</li>
+                        <li>Make sure your file is named exactly <code>index.html</code> (not <code>Index.html</code> or <code>index.HTML</code>)</li>
+                        <li>Check that GitHub Pages is enabled in Settings → Pages</li>
+                        <li>Make sure the source is set to "main" branch</li>
+                    </ul>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"I can't find the Settings or Pages option"</h4>
+                    <p style="font-size: 0.9rem;">Make sure you're on your repository page (not your profile page). The URL should look like: <code>github.com/yourusername/helloworld</code></p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"My changes aren't showing up"</h4>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Wait 1-2 minutes after committing</li>
+                        <li>Hard refresh your browser: <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> (Windows)</li>
+                        <li>Try opening in an incognito/private window</li>
+                    </ul>
+                </div>
+
+                <div class="concept-card">
+                    <h4>"The page looks different than on my computer"</h4>
+                    <p style="font-size: 0.9rem;">Make sure you uploaded the most recent version of your <code>index.html</code> file. The file on GitHub might be an older version.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer footer-fixed">
+        <span>vdr.me/code</span>
+        <span>&bull;</span>
+        <span>Victor del Rosal</span>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
