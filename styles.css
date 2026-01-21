@@ -51,7 +51,7 @@ body.light-mode .footer a { color: #1a73e8; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-dark);
     color: var(--text-primary);
     line-height: 1.6;
@@ -94,8 +94,9 @@ body.light-mode strong { color: var(--text-primary); font-weight: 600; }
 }
 .topbar-left { display: flex; align-items: center; gap: 1rem; }
 .logo {
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     background: linear-gradient(90deg, #7dd3fc 0%, #38bdf8 50%, #00D4FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -474,7 +475,7 @@ body.light-mode .session-content { border-radius: 0 0 8px 8px; }
 .session-content p { margin-bottom: 0.75rem; color: var(--text-secondary); }
 .session-content ul, .session-content ol { margin: 0.5rem 0 1rem 1.5rem; color: var(--text-secondary); }
 .session-content li { margin-bottom: 0.4rem; }
-.session-content code { background: rgba(0, 102, 255, 0.2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.875em; color: var(--cyan); }
+.session-content code { background: rgba(0, 102, 255, 0.2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.875em; color: var(--cyan); font-family: 'IBM Plex Mono', monospace; }
 
 body.light-mode .session-content h3 { color: #1a73e8; }
 body.light-mode .session-content code { background: #e8f0fe; color: #1a73e8; }
@@ -505,6 +506,7 @@ body.light-mode .session-content code { background: #e8f0fe; color: #1a73e8; }
     background: none;
     padding: 0;
     color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
 }
 .code-block-footer {
     display: flex;
@@ -618,7 +620,7 @@ body.light-mode .step-card .step-num { background: #1a73e8; color: #fff; }
     border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    font-family: inherit;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
     color: #fff;
 }
