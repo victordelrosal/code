@@ -3,226 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Guide | Code Your First Webpage | Victor del Rosal</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230066FF'/%3E%3Cstop offset='100%25' stop-color='%2300D4FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='72' font-family='Arial,sans-serif' font-size='65' font-weight='bold' fill='white' text-anchor='middle'%3E%3C/%3E%3Ctext x='50' y='42' font-family='monospace' font-size='28' fill='white' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3Ctext x='50' y='72' font-family='monospace' font-size='28' fill='white' text-anchor='middle'%3Ehi%3C/text%3E%3C/svg%3E">
+    <title>Hello World Guide | Code Your First Webpage</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ===== WAVE THEME (Tron Blue) ===== */
-        :root {
-            --blue-1: #000000;
-            --blue-2: #000036;
-            --blue-3: #02066F;
-            --blue-4: #170484;
-            --blue-5: #050c91;
-            --blue-6: #001489;
-            --blue-7: #0000B3;
-            --electric: #0066FF;
-            --cyan: #00D4FF;
-            --ice: #7dd3fc;
-            --glow: rgba(0, 102, 255, 0.2);
-            --glass: rgba(0, 20, 137, 0.25);
-            --glass-border: rgba(0, 180, 255, 0.15);
-            --glass-highlight: rgba(255, 255, 255, 0.1);
-            --text-primary: #f5f5f5;
-            --text-secondary: #d4d4d4;
-            --text-tertiary: #a3a3a3;
-            --text-muted: #737373;
-            --bg-dark: #000010;
-            --bg-card: var(--glass);
-            --bg-elevated: rgba(0, 20, 80, 0.4);
-            --bg-hover: rgba(0, 100, 200, 0.2);
-            --border: var(--glass-border);
-            --accent: var(--cyan);
-            --accent-hover: var(--ice);
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --card-shadow: 0 0 0 1px rgba(0, 180, 255, 0.1) inset, 0 20px 40px -16px rgba(0, 0, 0, 0.5), 0 0 60px -20px rgba(0, 102, 255, 0.3);
-            --card-hover-shadow: 0 0 0 1px rgba(0, 212, 255, 0.2) inset, 0 32px 64px -16px rgba(0, 0, 0, 0.6), 0 0 100px -20px rgba(0, 212, 255, 0.4);
-        }
-
-        /* ===== LIGHT MODE ===== */
-        body.light-mode {
-            --text-primary: #1a1a1a;
-            --text-secondary: #3d3d3d;
-            --text-tertiary: #666666;
-            --text-muted: #999999;
-            --bg-dark: #ffffff;
-            --bg-card: rgba(245, 245, 245, 0.9);
-            --bg-elevated: rgba(240, 240, 240, 0.95);
-            --bg-hover: rgba(0, 0, 0, 0.05);
-            --border: rgba(0, 0, 0, 0.12);
-            --glass: rgba(250, 250, 250, 0.9);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
-            --card-hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
-            --cyan: #0066cc;
-            --electric: #0052a3;
-            --accent: #0066cc;
-            --accent-hover: #0052a3;
-        }
-
-        body.light-mode::before { background: linear-gradient(135deg, rgba(240, 245, 255, 0.8), rgba(255, 255, 255, 0.9)); }
-        body.light-mode .topbar { background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0, 0, 0, 0.08); backdrop-filter: blur(20px); }
-        body.light-mode .session { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.08); }
-        body.light-mode .session-header:hover { background: rgba(0, 0, 0, 0.02); }
-        body.light-mode .session-number { background: linear-gradient(135deg, #0066cc, #0052a3); }
-        body.light-mode .concept-card { background: rgba(0, 102, 204, 0.05); border-left: 4px solid #0066cc; }
-        body.light-mode .callout.info { background: rgba(0, 102, 204, 0.06); border-left: 4px solid #0066cc; }
-        body.light-mode .callout.success { background: rgba(34, 197, 94, 0.08); }
-        body.light-mode .callout.warning { background: rgba(245, 158, 11, 0.08); }
-        body.light-mode .callout.error { background: rgba(239, 68, 68, 0.08); }
-        body.light-mode .step-card { background: rgba(245, 245, 245, 0.8); border: 1px solid rgba(0, 0, 0, 0.08); }
-        body.light-mode .step-card:hover { background: rgba(0, 102, 204, 0.04); border-color: #0066cc; }
-        body.light-mode pre, body.light-mode code { background: rgba(0, 0, 0, 0.04); }
-        body.light-mode table { border-color: rgba(0, 0, 0, 0.1); }
-        body.light-mode th { background: rgba(0, 0, 0, 0.03); }
-        body.light-mode td, body.light-mode th { border-color: rgba(0, 0, 0, 0.08); }
-        body.light-mode .btn-ghost { color: var(--text-secondary); }
-        body.light-mode .btn-ghost:hover { background: rgba(0, 0, 0, 0.05); }
-        body.light-mode .course-header h1 { background: linear-gradient(135deg, #1a1a1a 0%, #0052a3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        body.light-mode .course-header .subtitle { color: #3d3d3d; }
-        body.light-mode .logo { color: #1a1a1a; }
-
-        .theme-label { margin-left: 0.5rem; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 102, 255, 0.12) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 212, 255, 0.08) 0%, transparent 40%); pointer-events: none; z-index: -1; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: rgba(0, 180, 255, 0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
-
-        .topbar { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(0, 0, 54, 0.95); border-bottom: 1px solid rgba(0, 102, 255, 0.2); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 8px 32px rgba(0, 102, 255, 0.1); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-        .topbar-left { display: flex; align-items: center; gap: 1rem; }
-        .logo { font-size: 1.25rem; font-weight: 700; background: linear-gradient(90deg, #7dd3fc 0%, #38bdf8 50%, #00D4FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .course-title { font-size: 0.9rem; color: var(--text-secondary); padding-left: 1rem; border-left: 1px solid var(--border); }
-        .topbar-right { display: flex; gap: 0.75rem; }
-        .btn { padding: 0.5rem 1rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.875rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
-        .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
-        .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--cyan); }
-
-        .main { margin-top: 56px; margin-bottom: 40px; padding: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; min-height: calc(100vh - 96px); }
-        .course-header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); text-align: center; }
-        .course-header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .course-header .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
-        .course-header .meta { display: flex; gap: 1.5rem; margin-top: 1rem; font-size: 0.875rem; color: var(--text-tertiary); flex-wrap: wrap; justify-content: center; }
-        .course-header .meta span { display: flex; align-items: center; gap: 0.35rem; }
-        .course-header .meta svg { color: var(--cyan); }
-
-        .session { margin-bottom: 1rem; }
-        .session-header { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); box-shadow: var(--card-shadow); position: relative; overflow: hidden; }
-        .session-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.1) 20%, rgba(0, 212, 255, 0.2) 50%, rgba(0, 212, 255, 0.1) 80%, transparent 100%); }
-        .session.open .session-header { border-radius: 1rem 1rem 0 0; }
-        .session-header:hover { border-color: rgba(0, 212, 255, 0.3); box-shadow: var(--card-hover-shadow); transform: translateY(-2px); }
-        .session-number { width: 48px; height: 48px; background: linear-gradient(135deg, var(--blue-5), var(--cyan)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0; }
-        .session-info { flex: 1; }
-        .session-info h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
-        .session-info .session-meta { font-size: 0.8rem; color: var(--text-tertiary); }
-        .session-toggle { color: var(--text-muted); transition: transform 0.3s ease, color 0.2s; }
-        .session-header:hover .session-toggle { color: var(--cyan); }
-        .session.open .session-toggle { transform: rotate(180deg); color: var(--cyan); }
-        .session-content { display: none; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 1rem 1rem; backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); }
-        .session.open .session-content { display: block; }
-        .session-content h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--cyan); }
-        .session-content h3:first-child { margin-top: 0; }
-        .session-content h4 { font-size: 0.95rem; font-weight: 600; margin: 1rem 0 0.5rem; color: var(--text-primary); }
-        .session-content p { margin-bottom: 0.75rem; color: var(--text-secondary); }
-        .session-content ul, .session-content ol { margin: 0.5rem 0 1rem 1.5rem; color: var(--text-secondary); }
-        .session-content li { margin-bottom: 0.4rem; }
-        .session-content a { color: var(--cyan); text-decoration: none; }
-        .session-content a:hover { text-decoration: underline; }
-        .session-content strong { color: var(--ice); }
-        .session-content code { background: rgba(0, 102, 255, 0.2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.875em; color: var(--cyan); }
-        .session-content pre { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; }
-        .session-content pre code { background: none; padding: 0; color: var(--text-secondary); }
-
-        .code-block-wrapper { margin: 1rem 0; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; }
-        .code-block-wrapper pre { margin: 0; background: none; border: none; border-radius: 0; white-space: pre-wrap; word-wrap: break-word; font-size: 1.25rem; line-height: 1.5; }
-        .code-block-wrapper pre code { white-space: pre-wrap; word-wrap: break-word; font-size: inherit; }
-        .code-block-footer { display: flex; justify-content: flex-end; padding: 0.4rem 0.5rem; background: rgba(0, 0, 0, 0.15); }
-        .copy-code-btn { background: transparent; border: none; border-radius: 4px; padding: 0.35rem 0.6rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-muted); font-size: 0.75rem; transition: all 0.2s; }
-        body.light-mode .code-block-wrapper { background: rgba(0, 0, 0, 0.04); }
-        body.light-mode .code-block-footer { background: rgba(0, 0, 0, 0.02); }
-        .copy-code-btn:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-        .copy-code-btn svg { width: 16px; height: 16px; }
-        .copy-code-btn .copy-icon { display: inline; }
-        .copy-code-btn .check-icon { display: none; color: var(--success); }
-        .copy-code-btn.copied { background: rgba(34, 197, 94, 0.15); }
-        .copy-code-btn.copied .copy-icon { display: none; }
-        .copy-code-btn.copied .check-icon { display: inline; }
-        .copy-code-btn .btn-text { transition: opacity 0.2s; }
-        .copy-code-btn.copied .btn-text { color: var(--success); }
-        body.light-mode .copy-code-btn { background: rgba(0, 0, 0, 0.05); }
-        body.light-mode .copy-code-btn:hover { background: rgba(0, 102, 204, 0.1); }
-        body.light-mode .copy-code-btn.copied { background: rgba(34, 197, 94, 0.1); }
-
-        .callout { padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; border-left: 4px solid; backdrop-filter: blur(20px); }
-        .callout.info { background: rgba(0, 102, 255, 0.15); border-color: var(--electric); }
-        .callout.warning { background: rgba(245, 158, 11, 0.15); border-color: var(--warning); }
-        .callout.success { background: rgba(34, 197, 94, 0.15); border-color: var(--success); }
-        .callout.error { background: rgba(239, 68, 68, 0.15); border-color: var(--error); }
-        .callout h4 { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .callout.warning h4 { color: var(--warning); }
-        .callout.success h4 { color: var(--success); }
-        .callout.error h4 { color: var(--error); }
-        .callout.info h4 { color: var(--electric); }
-
-        .concept-card { background: rgba(0, 102, 255, 0.1); border: 1px solid rgba(0, 180, 255, 0.2); border-radius: 0.75rem; padding: 1rem; margin: 0.5rem 0; }
-        .concept-card h4 { color: var(--cyan); font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .concept-card p { font-size: 0.9rem; margin: 0; }
-
-        .step-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0; }
-        .step-card { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; transition: all 0.2s ease; }
-        .step-card:hover { border-color: var(--cyan); background: rgba(0, 102, 255, 0.1); transform: translateY(-2px); }
-        .step-card .step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--cyan), var(--ice)); border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; color: #000; }
-        .step-card h5 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
-        .step-card p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
-
-        .keyboard-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
-        .keyboard-table th, .keyboard-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
-        .keyboard-table th { background: rgba(0, 102, 255, 0.15); font-weight: 600; color: var(--cyan); }
-        .keyboard-table kbd { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: inherit; font-size: 0.85rem; color: #fff; }
-        .session-content kbd { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: inherit; font-size: 0.85em; color: #fff; }
-        body.light-mode .keyboard-table kbd, body.light-mode .session-content kbd { background: rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.2); color: #333; }
-
-        .filename-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
-        .filename-box { padding: 1rem; border-radius: 0.5rem; text-align: center; }
-        .filename-box.wrong { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); }
-        .filename-box.right { background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); }
-        .filename-box h5 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-        .filename-box.wrong h5 { color: var(--error); }
-        .filename-box.right h5 { color: var(--success); }
-        .filename-box code { display: block; margin: 0.25rem 0; }
-
-        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 40px; background: rgba(0, 0, 54, 0.95); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 0.75rem; font-size: 0.8rem; color: var(--text-muted); z-index: 100; backdrop-filter: blur(20px); }
-
-        @media (max-width: 768px) {
-            .main { padding: 1rem; }
-            .course-title { display: none; }
-            .step-grid { grid-template-columns: 1fr; }
-            .filename-compare { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="topbar">
         <div class="topbar-left">
-            <span class="logo">&lt;/&gt; Code</span>
-            <span class="course-title">Hello World Guide</span>
+            <a href="index.html" class="logo">&lt;/&gt; Code</a>
+            <span class="page-title">Hello World Guide</span>
         </div>
         <div class="topbar-right">
-            <button class="btn btn-ghost" onclick="toggleTheme()" id="theme-toggle" title="Toggle light/dark mode">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <span class="theme-label">Light</span>
-            </button>
+            <div class="theme-selector">
+                <button class="active" onclick="setTheme('dark')" title="Dark theme">Dark</button>
+                <button onclick="setTheme('light')" title="Light theme">Light</button>
+                <button onclick="setTheme('pro')" title="Professional theme">Pro</button>
+            </div>
         </div>
     </header>
 
-    <main class="main">
+    <main class="main-padded">
         <div class="course-header">
             <h1>Hello World Guide</h1>
             <p class="subtitle">Coding Your First Web Page</p>
@@ -485,43 +288,12 @@
         </article>
     </main>
 
-    <footer class="footer">
-        <span>vdr.one/code</span>
-        <span class="footer-sep">•</span>
+    <footer class="footer footer-fixed">
+        <span>vdr.me/code</span>
+        <span>&bull;</span>
         <span>Victor del Rosal</span>
     </footer>
 
-    <script>
-        function toggleSession(header) {
-            const session = header.closest('.session');
-            session.classList.toggle('open');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const label = document.querySelector('.theme-label');
-            label.textContent = document.body.classList.contains('light-mode') ? 'Dark' : 'Light';
-            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-        }
-
-        function copyCode(codeId, btn) {
-            const codeEl = document.getElementById(codeId);
-            const text = codeEl.textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                btn.classList.add('copied');
-                btn.querySelector('.btn-text').textContent = 'Copied to clipboard';
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.querySelector('.btn-text').textContent = 'Copy';
-                }, 2000);
-            });
-        }
-
-        // Load saved theme
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('light-mode');
-            document.querySelector('.theme-label').textContent = 'Dark';
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
