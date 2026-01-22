@@ -395,10 +395,7 @@ body.light-mode .scroll-btn:hover { color: rgba(26, 115, 232, 0.7); }
 .tutorial-card.placeholder:hover { transform: none; box-shadow: var(--card-shadow); cursor: default; z-index: 1; }
 
 body.light-mode .tutorial-card {
-    background: radial-gradient(ellipse 120% 100% at 50% 0%,
-        #fbfbfb 0%,
-        #efefef 40%,
-        #e3e3e3 100%);
+    background: #f9f9f9;
     border: none;
     border-radius: 14px;
     box-shadow:
@@ -410,6 +407,7 @@ body.light-mode .tutorial-card {
         0 8px 16px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 body.light-mode .tutorial-card::before {
     content: '';
@@ -1106,6 +1104,7 @@ body.light-mode [data-tutorial].completed:hover {
 }
 
 /* Light mode adjustments */
+body.light-mode .completion-toggle { background: #fff; border-radius: 8px; }
 body.light-mode .completion-toggle .check-empty { border-color: #dadce0; }
 body.light-mode .completion-toggle:hover .check-empty { border-color: #1e8e3e; }
 body.light-mode .completion-toggle .check-filled { border-color: #1e8e3e; background: #1e8e3e; }
