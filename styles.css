@@ -794,7 +794,8 @@ body.light-mode .session-content code { background: #e8f0fe; color: #1a73e8; }
     line-height: 1.5;
     padding: 1rem;
 }
-.code-block-wrapper pre code {
+.code-block-wrapper pre code,
+.session-content .code-block-wrapper pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
     font-size: inherit;
@@ -811,7 +812,7 @@ body.light-mode .session-content code { background: #e8f0fe; color: #1a73e8; }
 }
 
 body.light-mode .code-block-wrapper { background: #f8f9fa; border-color: #dadce0; }
-body.light-mode .code-block-wrapper pre code { color: #5f6368; }
+body.light-mode .session-content .code-block-wrapper pre code { color: #5f6368; background: none; }
 body.light-mode .code-block-footer { background: #f1f3f4; }
 
 .copy-code-btn {
