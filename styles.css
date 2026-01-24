@@ -1213,8 +1213,6 @@ body.light-mode .tutorial-completion-btn .check-filled { border-color: #1e8e3e; 
     max-width: 100%;
     margin: 1rem 0;
     border-radius: 8px;
-    border: 1px solid var(--border);
-    box-shadow: var(--card-shadow);
 }
 .screenshot-small {
     max-width: 200px;
@@ -1228,10 +1226,6 @@ body.light-mode .tutorial-completion-btn .check-filled { border-color: #1e8e3e; 
 }
 .screenshot-group .screenshot {
     margin: 0;
-}
-body.light-mode .screenshot {
-    border-color: #dadce0;
-    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.2);
 }
 
 /* ===== RESPONSIVE ===== */
