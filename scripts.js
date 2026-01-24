@@ -45,6 +45,16 @@ function toggleSession(header) {
     if (session) session.classList.toggle('open');
 }
 
+// ===== IMAGE TOGGLE (Hide/Show Screenshots) =====
+function toggleImages(btn) {
+    const content = btn.closest('.session-content');
+    if (!content) return;
+
+    const isHidden = content.classList.toggle('text-only');
+    btn.classList.toggle('active', isHidden);
+    btn.querySelector('.toggle-text').textContent = isHidden ? 'Show images' : 'Hide images';
+}
+
 // ===== COMPLETION TOGGLE =====
 function toggleCompletion(event, tutorialId) {
     event.preventDefault();

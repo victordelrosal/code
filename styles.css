@@ -1230,6 +1230,40 @@ body.light-mode .tutorial-completion-btn .check-filled { border-color: #1e8e3e; 
     margin: 0;
 }
 
+/* Hide images toggle */
+.view-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+.view-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.view-toggle-btn:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+.view-toggle-btn .icon-show { display: none; }
+.view-toggle-btn.active .icon-hide { display: none; }
+.view-toggle-btn.active .icon-show { display: block; }
+
+body.light-mode .view-toggle-btn { border-color: #dadce0; color: #5f6368; }
+body.light-mode .view-toggle-btn:hover { border-color: #1a73e8; color: #1a73e8; }
+
+/* Text-only mode */
+.text-only .screenshot,
+.text-only .screenshot-group { display: none; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }

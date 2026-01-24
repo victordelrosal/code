@@ -60,7 +60,15 @@
                 </div>
                 <span class="session-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
             </div>
-            <div class="session-content">
+            <div class="session-content" id="quick-start-content">
+                <div class="view-toggle">
+                    <button class="view-toggle-btn" onclick="toggleImages(this)">
+                        <svg class="icon-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <svg class="icon-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/></svg>
+                        <span class="toggle-text">Hide images</span>
+                    </button>
+                </div>
+
                 <div class="callout info" style="margin-bottom: 1.5rem;">
                     <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> First: Create a GitHub Account</h4>
                     <p style="margin-bottom: 0;">Don't have an account yet? Go to <a href="https://github.com" target="_blank">github.com</a> and click <strong>Sign up</strong>. It's free!</p>
