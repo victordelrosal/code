@@ -1207,6 +1207,33 @@ body.light-mode .tutorial-completion-btn:hover { border-color: #1e8e3e; color: #
 body.light-mode .tutorial-completion-btn.completed { border-color: #1e8e3e; background: rgba(30, 142, 62, 0.1); color: #1e8e3e; }
 body.light-mode .tutorial-completion-btn .check-filled { border-color: #1e8e3e; background: #1e8e3e; }
 
+/* ===== SCREENSHOTS ===== */
+.screenshot {
+    display: block;
+    max-width: 100%;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+}
+.screenshot-small {
+    max-width: 200px;
+}
+.screenshot-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+    margin: 1rem 0;
+}
+.screenshot-group .screenshot {
+    margin: 0;
+}
+body.light-mode .screenshot {
+    border-color: #dadce0;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.2);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }
