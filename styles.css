@@ -140,7 +140,7 @@ body.light-mode strong { color: var(--text-primary); font-weight: 600; }
     color: #5CE1E6;
     text-decoration: none;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 0.35rem;
 }
 .logo:hover { text-decoration: none; color: #5CE1E6; }
