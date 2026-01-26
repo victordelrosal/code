@@ -542,6 +542,7 @@ body.light-mode .card-content p {
     font-weight: 500;
 }
 .card-tag.beginner { background: rgba(34, 197, 94, 0.15); color: var(--success); }
+.card-tag.intermediate { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
 .card-tag.coming { background: rgba(255, 255, 255, 0.1); color: var(--text-muted); }
 
 body.light-mode .card-tag {
@@ -559,6 +560,10 @@ body.light-mode .card-tag {
 body.light-mode .card-tag.beginner {
     background: linear-gradient(180deg, #c8e6c9 0%, #a5d6a7 100%);
     color: #2e7d32;
+}
+body.light-mode .card-tag.intermediate {
+    background: linear-gradient(180deg, #bbdefb 0%, #90caf9 100%);
+    color: #1565c0;
 }
 body.light-mode .card-tag.coming {
     background: linear-gradient(180deg, #d8d8d8 0%, #c0c0c0 100%);
