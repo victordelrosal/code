@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCode - The Ultimate AI Coding Assistant</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300d4ff'/%3E%3Cstop offset='50%25' stop-color='%237c3aed'/%3E%3Cstop offset='100%25' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='%230f0f23'/%3E%3Cpath d='M10 10 L6 16 L10 22' stroke='url(%23g)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='16' cy='16' r='5' stroke='url(%23g)' stroke-width='2.5' fill='none'/%3E%3Cpath d='M22 10 L26 16 L22 22' stroke='url(%23g)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300d4ff'/%3E%3Cstop offset='50%25' stop-color='%237c3aed'/%3E%3Cstop offset='100%25' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='40' fill='%230f0f23'/%3E%3Cpath d='M56 56 L34 90 L56 124' stroke='url(%23g)' stroke-width='14' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='90' cy='90' r='28' stroke='url(%23g)' stroke-width='14' fill='none'/%3E%3Cpath d='M124 56 L146 90 L124 124' stroke='url(%23g)' stroke-width='14' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            --bg-secondary: rgba(255,255,255,0.05);
+            --bg-tertiary: rgba(255,255,255,0.03);
+            --text-primary: white;
+            --text-secondary: #b8c5d6;
+            --text-tertiary: #d1dae6;
+            --border-color: rgba(255,255,255,0.1);
+            --border-hover: rgba(255,255,255,0.25);
+            --card-shadow: rgba(0,0,0,0.4);
+            --code-bg: #0d1117;
+            --footer-border: rgba(255,255,255,0.1);
+            --footer-text: #8896a8;
+            --btn-bg: rgba(255,255,255,0.1);
+            --accent: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.3);
+            --focus-ring: rgba(0, 212, 255, 0.5);
+        }
+
+        body.light-mode {
+            --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --bg-secondary: rgba(0,0,0,0.04);
+            --bg-tertiary: rgba(0,0,0,0.02);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #334155;
+            --border-color: rgba(0,0,0,0.1);
+            --border-hover: rgba(0,0,0,0.2);
+            --card-shadow: rgba(0,0,0,0.15);
+            --code-bg: #f1f5f9;
+            --footer-border: rgba(0,0,0,0.1);
+            --footer-text: #64748b;
+            --btn-bg: rgba(0,0,0,0.06);
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.2);
+            --focus-ring: rgba(14, 165, 233, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            background-attachment: fixed;
+            min-height: 100vh;
+            transition: background 0.4s ease, color 0.3s ease;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #7c3aed, #f472b6);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Accessibility: Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Focus States */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px var(--focus-ring);
+        }
+
+        /* Theme Toggle with Tooltip */
+        .theme-toggle-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 25px var(--card-shadow);
+            border-color: var(--accent);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .theme-toggle-tooltip {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-toggle:hover + .theme-toggle-tooltip,
+        .theme-toggle:focus-visible + .theme-toggle-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        /* Header with Animated Background */
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(244, 114, 182, 0.06) 0%, transparent 50%);
+            animation: headerGlow 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes headerGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed, #f472b6);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            animation: logoShimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes logoShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .logo-icon {
+                width: 56px;
+                height: 56px;
+            }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation Tabs with Sliding Indicator */
+        .level-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 6px;
+            background: var(--bg-secondary);
+            border-radius: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 600px) {
+            .level-nav {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                max-width: 100%;
+                justify-content: flex-start;
+            }
+            .level-nav::-webkit-scrollbar {
+                display: none;
+            }
+            .level-btn {
+                scroll-snap-align: center;
+                flex-shrink: 0;
+            }
+        }
+
+        .level-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: transparent;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .level-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .level-btn:active {
+            transform: scale(0.97);
+        }
+
+        .level-btn.active {
+            color: white;
+        }
+
+        .level-btn.beginner.active { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
+        .level-btn.intermediate.active { background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        .level-btn.advanced.active { background: linear-gradient(135deg, #8b5cf6, #6d28d9); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); }
+
+        /* Content Sections */
+        .level-content {
+            display: none;
+        }
+
+        .level-content.active {
+            display: block;
+            animation: contentReveal 0.5s ease forwards;
+        }
+
+        @keyframes contentReveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--text-primary);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Cards Grid with Staggered Animation */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:nth-child(1) { transition-delay: 0ms; }
+        .card:nth-child(2) { transition-delay: 80ms; }
+        .card:nth-child(3) { transition-delay: 160ms; }
+        .card:nth-child(4) { transition-delay: 240ms; }
+        .card:nth-child(5) { transition-delay: 320ms; }
+        .card:nth-child(6) { transition-delay: 400ms; }
+
+        .card:hover {
+            transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+            border-color: var(--accent);
+            box-shadow: 
+                0 25px 50px var(--card-shadow),
+                0 0 40px var(--accent-glow);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .card h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            list-style: none;
+            color: var(--text-tertiary);
+        }
+
+        .card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .card.visible ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .card.visible ul li:nth-child(1) { transition-delay: 150ms; }
+        .card.visible ul li:nth-child(2) { transition-delay: 250ms; }
+        .card.visible ul li:nth-child(3) { transition-delay: 350ms; }
+
+        .card ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            background: var(--bg-tertiary);
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        .use-cases.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .use-cases h3 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .use-case-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .use-case-item {
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .use-cases.visible .use-case-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .use-cases.visible .use-case-item:nth-child(1) { transition-delay: 100ms; }
+        .use-cases.visible .use-case-item:nth-child(2) { transition-delay: 200ms; }
+        .use-cases.visible .use-case-item:nth-child(3) { transition-delay: 300ms; }
+        .use-cases.visible .use-case-item:nth-child(4) { transition-delay: 400ms; }
+
+        .use-case-item:hover {
+            transform: translateX(5px);
+            background: var(--btn-bg);
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+
+        .use-case-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .use-case-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Code Example with Copy Button */
+        .code-example {
+            background: var(--code-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 60px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        .code-example.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .code-example h3 {
+            color: #58a6ff;
+            margin: 0;
+        }
+
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--btn-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #10b981;
+        }
+
+        .code-example pre {
+            color: var(--text-tertiary);
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .code-example .comment { color: #8b949e; }
+        .code-example .keyword { color: #ff7b72; }
+        .code-example .string { color: #a5d6ff; }
+        .code-example .function { color: #d2a8ff; }
+
+        body.light-mode .code-example .comment { color: #6b7280; }
+        body.light-mode .code-example .string { color: #0369a1; }
+        body.light-mode .code-example .function { color: #7c3aed; }
+        body.light-mode .code-example pre { color: #374151; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--footer-text);
+            border-top: 1px solid var(--footer-border);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .use-cases { padding: 30px 20px; }
+            .theme-toggle-wrapper {
+                top: 15px;
+                right: 15px;
+            }
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+            .theme-toggle-tooltip {
+                display: none;
+            }
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            z-index: 10000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="scroll-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <div class="theme-toggle-wrapper">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle between dark and light theme">
+            <span class="theme-icon" aria-hidden="true"></span>
+        </button>
+        <span class="theme-toggle-tooltip">Toggle theme (Ctrl+T)</span>
+    </div>
+
+    <header>
+        <div class="header-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="logo-wrapper">
+                <svg class="logo-icon" viewBox="0 0 64 64" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00d4ff"/>
+                            <stop offset="50%" stop-color="#7c3aed"/>
+                            <stop offset="100%" stop-color="#f472b6"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="64" height="64" rx="14" fill="#0f0f23"/>
+                    <path d="M20 20 L12 32 L20 44" stroke="url(#logoGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <circle cx="32" cy="32" r="10" stroke="url(#logoGradient)" stroke-width="4" fill="none"/>
+                    <path d="M44 20 L52 32 L44 44" stroke="url(#logoGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                <h1 class="logo">OpenCode</h1>
+            </div>
+            <p class="tagline">The AI-powered coding assistant that transforms how you build software—from simple scripts to enterprise systems.</p>
+            
+            <nav class="level-nav" role="tablist" aria-label="Experience level">
+                <button class="level-btn beginner active" onclick="showLevel('beginner')" role="tab" aria-selected="true" aria-controls="beginner" id="tab-beginner">
+                    <span aria-hidden="true">&#127793;</span> Beginner
+                </button>
+                <button class="level-btn intermediate" onclick="showLevel('intermediate')" role="tab" aria-selected="false" aria-controls="intermediate" id="tab-intermediate">
+                    <span aria-hidden="true">&#128640;</span> Intermediate
+                </button>
+                <button class="level-btn advanced" onclick="showLevel('advanced')" role="tab" aria-selected="false" aria-controls="advanced" id="tab-advanced">
+                    <span aria-hidden="true">&#9889;</span> Advanced
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+        <!-- BEGINNER LEVEL -->
+        <section id="beginner" class="level-content active" role="tabpanel" aria-labelledby="tab-beginner">
+            <div class="section-header">
+                <h2><span aria-hidden="true">&#127793;</span> Beginner Level</h2>
+                <p>Start your journey with OpenCode—no coding experience required</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128172;</div>
+                    <h3>Natural Language Coding</h3>
+                    <p>Simply describe what you want to build in plain English. OpenCode translates your ideas into working code.</p>
+                    <ul>
+                        <li>No syntax memorization needed</li>
+                        <li>Ask questions as you learn</li>
+                        <li>Get explanations for any code</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128737;</div>
+                    <h3>Safe Learning Environment</h3>
+                    <p>Experiment freely without fear of breaking things. OpenCode guides you through best practices.</p>
+                    <ul>
+                        <li>Automatic error detection</li>
+                        <li>Friendly explanations</li>
+                        <li>Suggested fixes with context</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128218;</div>
+                    <h3>Built-in Documentation</h3>
+                    <p>Access instant explanations for any concept, function, or library without leaving your workflow.</p>
+                    <ul>
+                        <li>Context-aware help</li>
+                        <li>Real-world examples</li>
+                        <li>Step-by-step tutorials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="use-cases">
+                <h3>Perfect For Beginners</h3>
+                <div class="use-case-list">
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#127760;</span> First Website</h4>
+                        <p>Create your first HTML page, add CSS styling, and make it interactive with JavaScript—all guided step by step.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#129302;</span> Automation Scripts</h4>
+                        <p>Automate repetitive tasks like file organization, data cleanup, or batch renaming without writing complex code.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128202;</span> Data Analysis</h4>
+                        <p>Turn spreadsheets into insights. OpenCode helps you analyze data and create visualizations.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#127918;</span> Simple Games</h4>
+                        <p>Build fun projects like quiz apps, number guessers, or text adventures while learning programming fundamentals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Example: Your First Request</h3>
+                    <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code to clipboard">
+                        <span class="copy-icon">&#128203;</span>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
+                <pre><code><span class="comment"># Just type what you want in plain English:</span>
+
+<span class="string">"Create a simple todo list webpage where I can add and remove items"</span>
+
+<span class="comment"># OpenCode will:</span>
+<span class="comment"># 1. Create the HTML structure</span>
+<span class="comment"># 2. Add beautiful CSS styling</span>
+<span class="comment"># 3. Write the JavaScript functionality</span>
+<span class="comment"># 4. Explain each part so you learn</span></code></pre>
+            </div>
+        </section>
+
+        <!-- INTERMEDIATE LEVEL -->
+        <section id="intermediate" class="level-content" role="tabpanel" aria-labelledby="tab-intermediate" hidden>
+            <div class="section-header">
+                <h2><span aria-hidden="true">&#128640;</span> Intermediate Level</h2>
+                <p>Accelerate your development workflow with powerful automation</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128260;</div>
+                    <h3>Intelligent Refactoring</h3>
+                    <p>Transform messy code into clean, maintainable architecture with AST-aware transformations.</p>
+                    <ul>
+                        <li>Pattern-based code updates</li>
+                        <li>Safe rename across files</li>
+                        <li>Automatic import management</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128269;</div>
+                    <h3>Codebase Intelligence</h3>
+                    <p>Navigate unfamiliar codebases instantly. OpenCode understands project structure and relationships.</p>
+                    <ul>
+                        <li>Find definitions and references</li>
+                        <li>Trace data flow</li>
+                        <li>Understand dependencies</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#129514;</div>
+                    <h3>Test Generation</h3>
+                    <p>Automatically generate comprehensive test suites that cover edge cases you might miss.</p>
+                    <ul>
+                        <li>Unit test scaffolding</li>
+                        <li>Integration test patterns</li>
+                        <li>Mocking strategies</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#127760;</div>
+                    <h3>Full-Stack Development</h3>
+                    <p>Build complete applications with frontend, backend, and database—all coordinated seamlessly.</p>
+                    <ul>
+                        <li>API design and implementation</li>
+                        <li>Database schema creation</li>
+                        <li>Frontend-backend integration</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128230;</div>
+                    <h3>Library Integration</h3>
+                    <p>Instantly access documentation and examples for any library. No more tab-switching.</p>
+                    <ul>
+                        <li>Context7 documentation lookup</li>
+                        <li>Real-world usage examples</li>
+                        <li>Best practice patterns</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128027;</div>
+                    <h3>Smart Debugging</h3>
+                    <p>Get to the root cause faster with AI-assisted debugging that understands your code context.</p>
+                    <ul>
+                        <li>Error trace analysis</li>
+                        <li>Suggested fixes with reasoning</li>
+                        <li>Prevention recommendations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="use-cases">
+                <h3>Intermediate Use Cases</h3>
+                <div class="use-case-list">
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#127959;</span> Feature Development</h4>
+                        <p>Implement complete features end-to-end: database migrations, API endpoints, UI components, and tests.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128295;</span> Legacy Code Modernization</h4>
+                        <p>Upgrade old JavaScript to TypeScript, refactor class components to hooks, or migrate frameworks.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128241;</span> Multi-Platform Apps</h4>
+                        <p>Build web apps, mobile apps, and desktop applications with shared logic and platform-specific UIs.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128274;</span> Security Hardening</h4>
+                        <p>Identify vulnerabilities, implement authentication flows, and add input validation across your app.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Example: Refactoring with AST-grep</h3>
+                    <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code to clipboard">
+                        <span class="copy-icon">&#128203;</span>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
+                <pre><code><span class="comment"># Transform all console.log statements to a proper logger:</span>
+
+<span class="function">ast_grep_replace</span>(
+    pattern=<span class="string">"console.log($MSG)"</span>,
+    rewrite=<span class="string">"logger.info($MSG)"</span>,
+    lang=<span class="string">"typescript"</span>
+)
+
+<span class="comment"># Find all async functions that don't handle errors:</span>
+
+<span class="function">ast_grep_search</span>(
+    pattern=<span class="string">"async function $NAME($$$) { $$$ }"</span>,
+    lang=<span class="string">"typescript"</span>
+)
+
+<span class="comment"># OpenCode applies changes safely across your entire codebase</span></code></pre>
+            </div>
+        </section>
+
+        <!-- ADVANCED LEVEL -->
+        <section id="advanced" class="level-content" role="tabpanel" aria-labelledby="tab-advanced" hidden>
+            <div class="section-header">
+                <h2><span aria-hidden="true">&#9889;</span> Advanced Level</h2>
+                <p>Orchestrate complex systems with AI-powered agents and parallel execution</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#129302;</div>
+                    <h3>Multi-Agent Orchestration</h3>
+                    <p>Deploy specialized AI agents in parallel—explorers for research, oracles for architecture, and builders for implementation.</p>
+                    <ul>
+                        <li>Background task execution</li>
+                        <li>Session continuity across agents</li>
+                        <li>Intelligent task routing</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#127963;</div>
+                    <h3>Architecture Consultation</h3>
+                    <p>Access the Oracle agent for high-IQ reasoning on complex architectural decisions and system design.</p>
+                    <ul>
+                        <li>Trade-off analysis</li>
+                        <li>Scalability planning</li>
+                        <li>Security architecture review</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128300;</div>
+                    <h3>Deep Code Analysis</h3>
+                    <p>LSP integration provides real-time diagnostics, go-to-definition, find-references, and workspace-wide refactoring.</p>
+                    <ul>
+                        <li>Type-safe transformations</li>
+                        <li>Cross-file impact analysis</li>
+                        <li>Semantic code search</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#127754;</div>
+                    <h3>Parallel Exploration</h3>
+                    <p>Launch multiple research queries simultaneously—search external docs, explore codebases, and fetch web data in parallel.</p>
+                    <ul>
+                        <li>Concurrent agent spawning</li>
+                        <li>Background result collection</li>
+                        <li>Context aggregation</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#127917;</div>
+                    <h3>Custom Skills & Workflows</h3>
+                    <p>Define specialized skills that inject domain expertise into agents. Create repeatable workflows for your team.</p>
+                    <ul>
+                        <li>Skill-based delegation</li>
+                        <li>Category-optimized models</li>
+                        <li>Project-specific protocols</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon" aria-hidden="true">&#128302;</div>
+                    <h3>Self-Healing Systems</h3>
+                    <p>Automatic failure recovery with intelligent rollback, verification loops, and escalation protocols.</p>
+                    <ul>
+                        <li>3-failure auto-escalation</li>
+                        <li>Git-based state recovery</li>
+                        <li>Evidence-based completion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="use-cases">
+                <h3>Advanced Use Cases</h3>
+                <div class="use-case-list">
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#127970;</span> Enterprise Migrations</h4>
+                        <p>Migrate entire codebases between frameworks, languages, or architectures with coordinated multi-agent execution.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128260;</span> CI/CD Pipeline Design</h4>
+                        <p>Design and implement sophisticated deployment pipelines with testing, staging, and production environments.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#128202;</span> System Performance Audits</h4>
+                        <p>Analyze application performance, identify bottlenecks, and implement optimizations with measurable impact.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4><span aria-hidden="true">&#127760;</span> Distributed Systems</h4>
+                        <p>Design microservices, implement event-driven architectures, and manage service mesh configurations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Example: Multi-Agent Research & Implementation</h3>
+                    <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code to clipboard">
+                        <span class="copy-icon">&#128203;</span>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
+                <pre><code><span class="comment"># Launch parallel exploration agents in background:</span>
+
+<span class="function">delegate_task</span>(
+    subagent_type=<span class="string">"explore"</span>,
+    run_in_background=<span class="keyword">true</span>,
+    prompt=<span class="string">"Find authentication patterns in our codebase..."</span>
+)
+
+<span class="function">delegate_task</span>(
+    subagent_type=<span class="string">"librarian"</span>,
+    run_in_background=<span class="keyword">true</span>,
+    prompt=<span class="string">"Find OAuth2 best practices in official docs..."</span>
+)
+
+<span class="comment"># Consult Oracle for architecture decision:</span>
+
+<span class="function">delegate_task</span>(
+    subagent_type=<span class="string">"oracle"</span>,
+    prompt=<span class="string">"Analyze trade-offs: JWT vs session-based auth for our scale..."</span>
+)
+
+<span class="comment"># Delegate implementation with skills:</span>
+
+<span class="function">delegate_task</span>(
+    category=<span class="string">"visual-engineering"</span>,
+    load_skills=[<span class="string">"frontend-ui-ux"</span>, <span class="string">"playwright"</span>],
+    prompt=<span class="string">"Implement the login flow with OAuth integration..."</span>
+)
+
+<span class="comment"># Continue session for fixes:</span>
+
+<span class="function">delegate_task</span>(
+    session_id=<span class="string">"ses_abc123"</span>,
+    prompt=<span class="string">"Fix: Type error on callback handler"</span>
+)</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built with OpenCode &bull; <a href="https://github.com/anthropics/anthropic-quickstarts" target="_blank" rel="noopener noreferrer">Learn More</a></p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">From simple scripts to enterprise systems—OpenCode grows with you.</p>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        const scrollProgress = document.querySelector('.scroll-progress');
+        
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = scrollPercent + '%';
+            scrollProgress.setAttribute('aria-valuenow', Math.round(scrollPercent));
+        }
+        
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+        // Tab Navigation
+        function showLevel(level) {
+            // Update content visibility
+            document.querySelectorAll('.level-content').forEach(section => {
+                section.classList.remove('active');
+                section.setAttribute('hidden', '');
+            });
+            
+            // Update tab states
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            
+            // Activate selected
+            const activeSection = document.getElementById(level);
+            const activeTab = document.querySelector(`.level-btn.${level}`);
+            
+            activeSection.classList.add('active');
+            activeSection.removeAttribute('hidden');
+            activeTab.classList.add('active');
+            activeTab.setAttribute('aria-selected', 'true');
+            
+            // Re-observe elements for animations
+            observeElements();
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-icon');
+            body.classList.toggle('light-mode');
+            
+            const isLight = body.classList.contains('light-mode');
+            icon.innerHTML = isLight ? '&#9728;' : '&#127769;';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+
+        // Keyboard shortcut for theme toggle
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 't') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        // Copy Code Functionality
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.querySelector('.copy-text').textContent = 'Copied!';
+                btn.querySelector('.copy-icon').innerHTML = '&#10003;';
+                
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.querySelector('.copy-text').textContent = 'Copy';
+                    btn.querySelector('.copy-icon').innerHTML = '&#128203;';
+                }, 2000);
+            });
+        }
+
+        // Intersection Observer for Scroll Animations
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe cards, use-cases, and code examples
+            document.querySelectorAll('.card, .use-cases, .code-example').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize
+        (function() {
+            // Theme initialization
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const icon = document.querySelector('.theme-icon');
+            
+            if (saved === 'light' || (!saved && !prefersDark)) {
+                document.body.classList.add('light-mode');
+                icon.innerHTML = '&#9728;';
+            } else {
+                icon.innerHTML = '&#127769;';
+            }
+            
+            // Initialize scroll animations
+            observeElements();
+            
+            // Initial scroll progress
+            updateScrollProgress();
+        })();
+    </script>
+</body>
+</html>
